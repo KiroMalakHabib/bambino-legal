@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bambino – Legal</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .link-card {
+      background: var(--surface-var);
+      border: 2px solid var(--border);
+      border-radius: 18px;
+      padding: 28px 20px;
+      text-align: center;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: border-color .2s, box-shadow .2s, transform .1s;
+    }
+    .link-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 4px 16px rgba(124,111,205,.15);
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+    .link-card .icon { font-size: 36px; margin-bottom: 12px; display: block; }
+    .link-card strong { display: block; font-size: 15px; font-weight: 800; color: var(--primary-dark); margin-bottom: 6px; }
+    .link-card span { font-size: 13px; color: var(--text-secondary); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Bambino <span>Baby Growth Tracker</span></div>
+  <h1>Legal &amp; Support</h1>
+  <p class="subtitle">Everything you need to know about your data and your rights.</p>
+</header>
+
+<nav>
+  <a href="terms.html">Terms &amp; Conditions</a>
+  <a href="privacy.html">Privacy Policy</a>
+  <a href="delete-account.html">Delete Account</a>
+</nav>
+
+<main>
+  <div class="card">
+    <p>Welcome to the Bambino legal portal. Here you can find our policies and manage your account data.</p>
+
+    <div class="links-grid">
+      <a class="link-card" href="terms.html">
+        <span class="icon">📄</span>
+        <strong>Terms &amp; Conditions</strong>
+        <span>Rules governing the use of the app</span>
+      </a>
+      <a class="link-card" href="privacy.html">
+        <span class="icon">🔒</span>
+        <strong>Privacy Policy</strong>
+        <span>How we collect and protect your data</span>
+      </a>
+      <a class="link-card" href="delete-account.html">
+        <span class="icon">🗑️</span>
+        <strong>Delete Account</strong>
+        <span>Request permanent removal of your data</span>
+      </a>
+    </div>
+
+    <h2 style="margin-top:36px;">Contact Us</h2>
+    <p>For any questions or concerns, reach us at <a href="mailto:kiromalakhabib@gmail.com">kiromalakhabib@gmail.com</a>. We aim to respond within 5 business days.</p>
+  </div>
+</main>
+
+<footer>
+  &copy; 2026 Bambino. All rights reserved.
+</footer>
+
+</body>
+</html>

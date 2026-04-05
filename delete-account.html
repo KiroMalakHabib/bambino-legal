@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delete Account – Bambino</title>
+  <meta name="description" content="Request permanent deletion of your Bambino account and all associated data." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .success-card {
+      display: none;
+      text-align: center;
+      padding: 48px 40px;
+    }
+    .success-card .icon-big { font-size: 56px; margin-bottom: 16px; }
+    .success-card h2 {
+      border: none;
+      font-size: 22px;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+    }
+    .success-card p { font-size: 15px; color: var(--text-secondary); margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Bambino <span>Baby Growth Tracker</span></div>
+  <h1>Delete Account</h1>
+  <p class="subtitle">We're sorry to see you go. This action is permanent.</p>
+</header>
+
+<nav>
+  <a href="terms.html">Terms &amp; Conditions</a>
+  <a href="privacy.html">Privacy Policy</a>
+  <a href="delete-account.html" class="active">Delete Account</a>
+</nav>
+
+<main>
+
+  <!-- Request form -->
+  <div class="card" id="formCard">
+
+    <div class="warning-banner">
+      <span class="icon">⚠️</span>
+      <p>This will permanently delete your account, your baby's profile, all growth records, milestones, health data, and any other information associated with your account. This action <strong>cannot be undone</strong>.</p>
+    </div>
+
+    <h2>What will be deleted</h2>
+    <ul>
+      <li>Your email address and account credentials</li>
+      <li>Your baby's name, date of birth, and gender</li>
+      <li>All growth measurements (weight, height, head circumference)</li>
+      <li>All milestone and health records</li>
+      <li>Profile photos and any uploaded media</li>
+      <li>App preferences and notification settings</li>
+    </ul>
+
+    <h2 style="margin-top:32px;">Submit Deletion Request</h2>
+
+    <form id="deleteForm" novalidate>
+
+      <div class="form-group">
+        <label for="email">Account Email Address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter the email linked to your account"
+          autocomplete="email"
+          required
+        />
+        <span id="emailError" style="color:var(--error);font-size:13px;font-weight:600;display:none;margin-top:6px;display:block;visibility:hidden;">Please enter a valid email address.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Account Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter your account password to confirm identity"
+          autocomplete="current-password"
+          required
+        />
+        <span id="passwordError" style="color:var(--error);font-size:13px;font-weight:600;display:block;visibility:hidden;margin-top:6px;">Password is required.</span>
+      </div>
+
+      <div class="confirm-box">
+        <p id="confirmSentence">
+          "I confirm that I want to permanently delete my Bambino account and all associated data, including my baby's profile and health records. I understand that this action is irreversible and cannot be undone."
+        </p>
+      </div>
+
+      <div class="checkbox-row">
+        <input type="checkbox" id="confirmCheck" />
+        <label for="confirmCheck">
+          I have read the above statement and I agree to permanently delete my account and all data.
+        </label>
+      </div>
+
+      <button type="submit" class="btn-delete" id="submitBtn" disabled>
+        Send Deletion Request
+      </button>
+
+      <div class="note-box">
+        <span class="icon">ℹ️</span>
+        <p>Your request will be sent to our team via email. We will process it and <strong>permanently delete your account within 30 days</strong>. You will receive a confirmation email once deletion is complete.</p>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- Success state -->
+  <div class="card success-card" id="successCard">
+    <div class="icon-big">✅</div>
+    <h2>Request Sent</h2>
+    <p>Your deletion request has been received.</p>
+    <p>We will permanently delete your account and all associated data <strong>within 30 days</strong>.</p>
+    <p style="margin-top:16px;font-size:13px;">If you did not receive a confirmation email, please contact us at <a href="mailto:kiromalakhabib@gmail.com">kiromalakhabib@gmail.com</a>.</p>
+  </div>
+
+</main>
+
+<footer>
+  &copy; 2026 Bambino. All rights reserved.
+  &nbsp;·&nbsp; <a href="terms.html">Terms &amp; Conditions</a>
+  &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+  const checkbox   = document.getElementById('confirmCheck');
+  const submitBtn  = document.getElementById('submitBtn');
+  const form       = document.getElementById('deleteForm');
+  const emailInput = document.getElementById('email');
+  const passInput  = document.getElementById('password');
+  const emailErr   = document.getElementById('emailError');
+  const passErr    = document.getElementById('passwordError');
+
+  // Enable submit only when checkbox is checked
+  checkbox.addEventListener('change', () => {
+    submitBtn.disabled = !checkbox.checked;
+  });
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3500);
+  }
+
+  function isValidEmail(v) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    let valid = true;
+
+    // Validate email
+    if (!isValidEmail(emailInput.value)) {
+      emailErr.style.visibility = 'visible';
+      emailInput.style.borderColor = 'var(--error)';
+      valid = false;
+    } else {
+      emailErr.style.visibility = 'hidden';
+      emailInput.style.borderColor = '';
+    }
+
+    // Validate password
+    if (passInput.value.trim().length < 1) {
+      passErr.style.visibility = 'visible';
+      passInput.style.borderColor = 'var(--error)';
+      valid = false;
+    } else {
+      passErr.style.visibility = 'hidden';
+      passInput.style.borderColor = '';
+    }
+
+    if (!valid) return;
+
+    const userEmail = emailInput.value.trim();
+    const confirmText = document.getElementById('confirmSentence').textContent.trim();
+
+    const subject = encodeURIComponent('Bambino Account Deletion Request');
+    const body = encodeURIComponent(
+      'Account Deletion Request\n' +
+      '========================\n\n' +
+      'Account Email: ' + userEmail + '\n\n' +
+      'User Confirmation Statement:\n' +
+      confirmText + '\n\n' +
+      '--- Submitted via Bambino Delete Account Page ---\n' +
+      'Date: ' + new Date().toUTCString()
+    );
+
+    const mailto = 'mailto:kiromalakhabib@gmail.com?subject=' + subject + '&body=' + body;
+
+    // Open email client
+    window.location.href = mailto;
+
+    // Show success after short delay (email client should open)
+    setTimeout(() => {
+      document.getElementById('formCard').style.display = 'none';
+      const success = document.getElementById('successCard');
+      success.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 800);
+  });
+
+  // Live clear errors on input
+  emailInput.addEventListener('input', () => {
+    if (isValidEmail(emailInput.value)) {
+      emailErr.style.visibility = 'hidden';
+      emailInput.style.borderColor = '';
+    }
+  });
+  passInput.addEventListener('input', () => {
+    if (passInput.value.trim().length > 0) {
+      passErr.style.visibility = 'hidden';
+      passInput.style.borderColor = '';
+    }
+  });
+</script>
+
+</body>
+</html>

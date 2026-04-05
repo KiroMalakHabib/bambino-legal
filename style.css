@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary:        #7C6FCD;
+  --primary-light:  #B8AEED;
+  --primary-dark:   #5849B8;
+  --secondary:      #FF8C69;
+  --accent:         #6ECFB5;
+  --bg:             #FAF8FF;
+  --surface:        #FFFFFF;
+  --surface-var:    #F3F0FA;
+  --text-primary:   #2D2D3A;
+  --text-secondary: #6E6E82;
+  --text-disabled:  #B0B0C0;
+  --error:          #E05C5C;
+  --divider:        #E8E4F0;
+  --border:         #D8D4EE;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+/* ── Header ── */
+header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  padding: 48px 24px 40px;
+  text-align: center;
+  color: #fff;
+}
+header .logo {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+header .logo span { opacity: .75; font-weight: 500; font-size: 14px; display: block; margin-top: 2px; }
+header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 16px;
+  opacity: .95;
+}
+header p.subtitle {
+  font-size: 13px;
+  opacity: .75;
+  margin-top: 6px;
+}
+
+/* ── Nav ── */
+nav {
+  background: var(--surface);
+  border-bottom: 1px solid var(--divider);
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  overflow-x: auto;
+}
+nav a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 13px;
+  padding: 14px 20px;
+  border-bottom: 3px solid transparent;
+  transition: color .2s, border-color .2s;
+  white-space: nowrap;
+}
+nav a:hover, nav a.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+/* ── Main content ── */
+main {
+  max-width: 760px;
+  margin: 40px auto;
+  padding: 0 20px 80px;
+}
+
+.card {
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 36px 40px;
+  box-shadow: 0 2px 16px rgba(124,111,205,.08);
+  border: 1px solid var(--divider);
+}
+
+/* ── Typography ── */
+h2 {
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin: 32px 0 10px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--surface-var);
+}
+h2:first-child { margin-top: 0; }
+h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 20px 0 6px;
+}
+p { margin-bottom: 12px; color: var(--text-secondary); font-size: 15px; }
+ul, ol { margin: 8px 0 16px 20px; }
+li { color: var(--text-secondary); font-size: 15px; margin-bottom: 6px; }
+strong { color: var(--text-primary); }
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.effective-date {
+  display: inline-block;
+  background: var(--surface-var);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 28px;
+}
+
+/* ── Delete form ── */
+.form-group {
+  margin-bottom: 22px;
+}
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+.form-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  color: var(--text-primary);
+  background: var(--bg);
+  transition: border-color .2s, box-shadow .2s;
+  outline: none;
+}
+.form-group input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(124,111,205,.12);
+}
+.form-group input::placeholder { color: var(--text-disabled); }
+
+.confirm-box {
+  background: #FFF5F5;
+  border: 2px solid #F5C6C6;
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 22px;
+}
+.confirm-box p {
+  font-size: 14px;
+  color: var(--error);
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.checkbox-row input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  margin-top: 2px;
+  accent-color: var(--error);
+  cursor: pointer;
+}
+.checkbox-row label {
+  font-size: 14px;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.btn-delete {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  background: var(--error);
+  color: #fff;
+  border: none;
+  border-radius: 16px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background .2s, transform .1s, box-shadow .2s;
+  box-shadow: 0 4px 14px rgba(224,92,92,.3);
+}
+.btn-delete:hover { background: #c94848; box-shadow: 0 6px 18px rgba(224,92,92,.4); }
+.btn-delete:active { transform: scale(.98); }
+.btn-delete:disabled {
+  background: var(--text-disabled);
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.note-box {
+  background: var(--surface-var);
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.note-box .icon { font-size: 20px; line-height: 1.4; }
+.note-box p { font-size: 13px; color: var(--text-secondary); margin: 0; }
+
+.warning-banner {
+  background: #FFF8ED;
+  border: 1px solid #FFD9A0;
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin-bottom: 28px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.warning-banner .icon { font-size: 22px; line-height: 1.3; }
+.warning-banner p { font-size: 14px; color: #8B5E00; margin: 0; font-weight: 600; }
+
+/* ── Footer ── */
+footer {
+  text-align: center;
+  padding: 32px 20px;
+  border-top: 1px solid var(--divider);
+  font-size: 13px;
+  color: var(--text-disabled);
+}
+footer a { color: var(--primary); font-weight: 600; }
+
+/* ── Toast ── */
+#toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #2D2D3A;
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity .3s, transform .3s;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 999;
+}
+#toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+@media (max-width: 600px) {
+  .card { padding: 24px 20px; }
+  header { padding: 36px 20px 30px; }
+  nav a { padding: 12px 14px; font-size: 12px; }
+}
