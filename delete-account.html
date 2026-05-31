@@ -7,8 +7,18 @@
   <meta name="description" content="Request permanent deletion of your Bambino account and all associated data." />
   <link rel="stylesheet" href="style.css" />
   <style>
+    .step { display: none; }
+    .step.active { display: block; }
+
+    .otp-input {
+      letter-spacing: 8px;
+      font-size: 28px;
+      font-weight: 700;
+      text-align: center;
+      font-family: monospace;
+    }
+
     .success-card {
-      display: none;
       text-align: center;
       padding: 48px 40px;
     }
@@ -20,6 +30,79 @@
       margin-bottom: 12px;
     }
     .success-card p { font-size: 15px; color: var(--text-secondary); margin-bottom: 8px; }
+    .success-card .deletion-date {
+      display: inline-block;
+      background: var(--surface-var);
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin: 12px 0 20px;
+    }
+
+    .resend-row {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    .resend-row button {
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0;
+      text-decoration: underline;
+    }
+    .resend-row button:disabled {
+      color: var(--text-disabled);
+      text-decoration: none;
+      cursor: default;
+    }
+
+    .step-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .step-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+    .step-dot.done { background: var(--primary); }
+    .step-line {
+      flex: 1;
+      height: 2px;
+      background: var(--border);
+    }
+    .step-line.done { background: var(--primary); }
+
+    .spinner {
+      display: inline-block;
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .field-error {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--error);
+      margin-top: 6px;
+      min-height: 18px;
+    }
   </style>
 </head>
 <body>
@@ -38,86 +121,137 @@
 
 <main>
 
-  <!-- Request form -->
-  <div class="card" id="formCard">
+  <div class="card" id="mainCard">
 
-    <div class="warning-banner">
-      <span class="icon">⚠️</span>
-      <p>This will permanently delete your account, your baby's profile, all growth records, milestones, health data, and any other information associated with your account. This action <strong>cannot be undone</strong>.</p>
+    <!-- ── Step 1: Email ──────────────────────────────────────────── -->
+    <div class="step active" id="step1">
+
+      <div class="step-indicator">
+        <div class="step-dot done"></div>
+        <div class="step-line"></div>
+        <div class="step-dot"></div>
+      </div>
+
+      <div class="warning-banner">
+        <span class="icon">⚠️</span>
+        <p>This will permanently delete your account and all baby data.
+           This action <strong>cannot be undone</strong>.</p>
+      </div>
+
+      <h2>What will be deleted</h2>
+      <ul>
+        <li>Your email address and account credentials</li>
+        <li>Your baby's name, date of birth, and gender</li>
+        <li>All growth measurements (weight, height, head circumference)</li>
+        <li>All milestone and health records</li>
+        <li>All feeding, sleep, and diaper records</li>
+        <li>Vaccination records and schedules</li>
+      </ul>
+
+      <h2 style="margin-top:32px;">Request Deletion</h2>
+
+      <form id="emailForm" novalidate>
+        <div class="form-group">
+          <label for="emailInput">Account Email Address</label>
+          <input
+            type="email"
+            id="emailInput"
+            name="email"
+            placeholder="Enter the email linked to your account"
+            autocomplete="email"
+            required
+          />
+          <span id="emailError" class="field-error" role="alert"></span>
+        </div>
+
+        <div class="checkbox-row">
+          <input type="checkbox" id="confirmCheck" />
+          <label for="confirmCheck">
+            I understand that my account and all associated data will be permanently deleted
+            and this cannot be undone.
+          </label>
+        </div>
+
+        <button type="submit" class="btn-delete" id="sendCodeBtn" disabled>
+          Send Verification Code
+        </button>
+
+        <div class="note-box">
+          <span class="icon">ℹ️</span>
+          <p>A 6-digit verification code will be sent to your email to confirm your identity.
+             Your account will be <strong>disabled immediately</strong> and permanently deleted
+             after <strong>90 days</strong>.</p>
+        </div>
+      </form>
     </div>
 
-    <h2>What will be deleted</h2>
-    <ul>
-      <li>Your email address and account credentials</li>
-      <li>Your baby's name, date of birth, and gender</li>
-      <li>All growth measurements (weight, height, head circumference)</li>
-      <li>All milestone and health records</li>
-      <li>Profile photos and any uploaded media</li>
-      <li>App preferences and notification settings</li>
-    </ul>
+    <!-- ── Step 2: OTP ────────────────────────────────────────────── -->
+    <div class="step" id="step2">
 
-    <h2 style="margin-top:32px;">Submit Deletion Request</h2>
-
-    <form id="deleteForm" novalidate>
-
-      <div class="form-group">
-        <label for="email">Account Email Address</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Enter the email linked to your account"
-          autocomplete="email"
-          required
-        />
-        <span id="emailError" style="color:var(--error);font-size:13px;font-weight:600;display:none;margin-top:6px;display:block;visibility:hidden;">Please enter a valid email address.</span>
+      <div class="step-indicator">
+        <div class="step-dot done"></div>
+        <div class="step-line done"></div>
+        <div class="step-dot done"></div>
       </div>
 
-      <div class="form-group">
-        <label for="password">Account Password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Enter your account password to confirm identity"
-          autocomplete="current-password"
-          required
-        />
-        <span id="passwordError" style="color:var(--error);font-size:13px;font-weight:600;display:block;visibility:hidden;margin-top:6px;">Password is required.</span>
+      <h2>Enter Verification Code</h2>
+      <p style="color:var(--text-secondary);font-size:14px;margin-bottom:24px;">
+        We sent a 6-digit code to <strong id="emailDisplay"></strong>.
+        It expires in 10&nbsp;minutes.
+      </p>
+
+      <form id="otpForm" novalidate>
+        <div class="form-group">
+          <label for="otpInput">Verification Code</label>
+          <input
+            type="text"
+            id="otpInput"
+            name="otp"
+            placeholder="000000"
+            maxlength="6"
+            inputmode="numeric"
+            autocomplete="one-time-code"
+            class="otp-input"
+            required
+          />
+          <span id="otpError" class="field-error" role="alert"></span>
+        </div>
+
+        <button type="submit" class="btn-delete" id="verifyBtn">
+          Confirm Account Deletion
+        </button>
+      </form>
+
+      <div class="resend-row">
+        Didn't receive it? &nbsp;
+        <button id="resendBtn" disabled>
+          Resend code (<span id="countdown">60</span>s)
+        </button>
       </div>
 
-      <div class="confirm-box">
-        <p id="confirmSentence">
-          "I confirm that I want to permanently delete my Bambino account and all associated data, including my baby's profile and health records. I understand that this action is irreversible and cannot be undone."
-        </p>
-      </div>
-
-      <div class="checkbox-row">
-        <input type="checkbox" id="confirmCheck" />
-        <label for="confirmCheck">
-          I have read the above statement and I agree to permanently delete my account and all data.
-        </label>
-      </div>
-
-      <button type="submit" class="btn-delete" id="submitBtn" disabled>
-        Send Deletion Request
-      </button>
-
-      <div class="note-box">
+      <div class="note-box" style="margin-top:20px;">
         <span class="icon">ℹ️</span>
-        <p>Your request will be sent to our team via email. We will process it and <strong>permanently delete your account within 30 days</strong>. You will receive a confirmation email once deletion is complete.</p>
+        <p>After confirmation your account is <strong>disabled immediately</strong>.
+           All data is permanently deleted after <strong>90 days</strong>.
+           To cancel, email <a href="mailto:bambinoappinfo@gmail.com">bambinoappinfo@gmail.com</a>
+           before that date.</p>
       </div>
+    </div>
 
-    </form>
-  </div>
+  </div><!-- /.card#mainCard -->
 
-  <!-- Success state -->
-  <div class="card success-card" id="successCard">
+  <!-- ── Success ────────────────────────────────────────────────── -->
+  <div class="card success-card" id="successCard" style="display:none;">
     <div class="icon-big">✅</div>
-    <h2>Request Sent</h2>
-    <p>Your deletion request has been received.</p>
-    <p>We will permanently delete your account and all associated data <strong>within 30 days</strong>.</p>
-    <p style="margin-top:16px;font-size:13px;">If you did not receive a confirmation email, please contact us at <a href="mailto:bambinoappinfo@gmail.com">bambinoappinfo@gmail.com</a>.</p>
+    <h2>Account Disabled</h2>
+    <p>Your account has been disabled and your deletion request has been received.</p>
+    <div class="deletion-date" id="deletionDateDisplay"></div>
+    <p>Your account and all data will be permanently deleted on the date above.</p>
+    <p style="margin-top:16px;font-size:13px;">
+      Changed your mind? Email
+      <a href="mailto:bambinoappinfo@gmail.com" style="color:var(--primary);">bambinoappinfo@gmail.com</a>
+      before that date and we can cancel the deletion and re-enable your account.
+    </p>
   </div>
 
 </main>
@@ -131,96 +265,207 @@
 <div id="toast"></div>
 
 <script>
-  const checkbox   = document.getElementById('confirmCheck');
-  const submitBtn  = document.getElementById('submitBtn');
-  const form       = document.getElementById('deleteForm');
-  const emailInput = document.getElementById('email');
-  const passInput  = document.getElementById('password');
-  const emailErr   = document.getElementById('emailError');
-  const passErr    = document.getElementById('passwordError');
+  // ── Configuration ──────────────────────────────────────────────────────────
+  // Run `firebase deploy --only functions` and replace the URLs below with the
+  // Cloud Run URLs printed in the terminal for each function.
+  const FUNCTIONS = {
+    requestDeletion: 'https://requestdeletion-4rhmfttoga-uc.a.run.app',
+    verifyDeletion:  'https://us-central1-bambino-path.cloudfunctions.net/verifyDeletion',
+  };
+  // ───────────────────────────────────────────────────────────────────────────
 
-  // Enable submit only when checkbox is checked
-  checkbox.addEventListener('change', () => {
-    submitBtn.disabled = !checkbox.checked;
-  });
+  const emailForm    = document.getElementById('emailForm');
+  const otpForm      = document.getElementById('otpForm');
+  const emailInput   = document.getElementById('emailInput');
+  const otpInput     = document.getElementById('otpInput');
+  const sendCodeBtn  = document.getElementById('sendCodeBtn');
+  const verifyBtn    = document.getElementById('verifyBtn');
+  const resendBtn    = document.getElementById('resendBtn');
+  const countdownEl  = document.getElementById('countdown');
+  const emailDisplay = document.getElementById('emailDisplay');
+  const emailErr     = document.getElementById('emailError');
+  const otpErr       = document.getElementById('otpError');
+  const checkbox     = document.getElementById('confirmCheck');
 
-  function showToast(msg) {
+  let currentEmail = '';
+  let countdownTimer = null;
+
+  // ── Utilities ──────────────────────────────────────────────────────────────
+  function showToast(msg, isError) {
     const t = document.getElementById('toast');
     t.textContent = msg;
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 3500);
+    t.className = 'show' + (isError ? ' error' : '');
+    clearTimeout(t._tid);
+    t._tid = setTimeout(() => { t.className = ''; }, 3500);
   }
 
   function isValidEmail(v) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
   }
 
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
+  function setLoading(btn, loading, label) {
+    btn.disabled = loading;
+    btn.innerHTML = loading
+      ? '<span class="spinner"></span>Please wait…'
+      : (label || btn.dataset.label || btn.textContent);
+    if (!loading && label) btn.dataset.label = label;
+  }
 
-    let valid = true;
+  function showStep(id) {
+    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
 
-    // Validate email
-    if (!isValidEmail(emailInput.value)) {
-      emailErr.style.visibility = 'visible';
-      emailInput.style.borderColor = 'var(--error)';
-      valid = false;
-    } else {
-      emailErr.style.visibility = 'hidden';
-      emailInput.style.borderColor = '';
-    }
+  function startCountdown(seconds) {
+    let t = seconds;
+    resendBtn.disabled = true;
+    countdownEl.textContent = t;
+    resendBtn.innerHTML = 'Resend code (<span id="countdown">' + t + '</span>s)';
+    clearInterval(countdownTimer);
+    countdownTimer = setInterval(() => {
+      t--;
+      const el = document.getElementById('countdown');
+      if (el) el.textContent = t;
+      if (t <= 0) {
+        clearInterval(countdownTimer);
+        resendBtn.disabled = false;
+        resendBtn.textContent = 'Resend code';
+      }
+    }, 1000);
+  }
 
-    // Validate password
-    if (passInput.value.trim().length < 1) {
-      passErr.style.visibility = 'visible';
-      passInput.style.borderColor = 'var(--error)';
-      valid = false;
-    } else {
-      passErr.style.visibility = 'hidden';
-      passInput.style.borderColor = '';
-    }
+  function formatDate(iso) {
+    return new Date(iso).toLocaleDateString('en-US', {
+      year: 'numeric', month: 'long', day: 'numeric',
+    });
+  }
 
-    if (!valid) return;
-
-    const userEmail = emailInput.value.trim();
-    const confirmText = document.getElementById('confirmSentence').textContent.trim();
-
-    const subject = encodeURIComponent('Bambino Account Deletion Request');
-    const body = encodeURIComponent(
-      'Account Deletion Request\n' +
-      '========================\n\n' +
-      'Account Email: ' + userEmail + '\n\n' +
-      'User Confirmation Statement:\n' +
-      confirmText + '\n\n' +
-      '--- Submitted via Bambino Delete Account Page ---\n' +
-      'Date: ' + new Date().toUTCString()
-    );
-
-    const mailto = 'mailto:bambinoappinfo@gmail.com?subject=' + subject + '&body=' + body;
-
-    // Open email client
-    window.location.href = mailto;
-
-    // Show success after short delay (email client should open)
-    setTimeout(() => {
-      document.getElementById('formCard').style.display = 'none';
-      const success = document.getElementById('successCard');
-      success.style.display = 'block';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 800);
+  // ── Step 1: send code ──────────────────────────────────────────────────────
+  checkbox.addEventListener('change', () => {
+    sendCodeBtn.disabled = !checkbox.checked;
   });
 
-  // Live clear errors on input
   emailInput.addEventListener('input', () => {
-    if (isValidEmail(emailInput.value)) {
-      emailErr.style.visibility = 'hidden';
-      emailInput.style.borderColor = '';
+    if (isValidEmail(emailInput.value)) emailErr.textContent = '';
+  });
+
+  emailForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    emailErr.textContent = '';
+
+    if (!isValidEmail(emailInput.value)) {
+      emailErr.textContent = 'Please enter a valid email address.';
+      emailInput.focus();
+      return;
+    }
+
+    currentEmail = emailInput.value.trim().toLowerCase();
+    setLoading(sendCodeBtn, true, 'Send Verification Code');
+
+    try {
+      const res = await fetch(FUNCTIONS.requestDeletion, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: currentEmail }),
+      });
+      const body = await res.json();
+
+      if (!res.ok) {
+        emailErr.textContent = body.error || 'Something went wrong. Please try again.';
+        return;
+      }
+
+      emailDisplay.textContent = currentEmail;
+      showStep('step2');
+      startCountdown(60);
+      otpInput.focus();
+
+    } catch (_) {
+      emailErr.textContent = 'Network error. Please check your connection and try again.';
+    } finally {
+      setLoading(sendCodeBtn, false, 'Send Verification Code');
+      sendCodeBtn.disabled = !checkbox.checked;
     }
   });
-  passInput.addEventListener('input', () => {
-    if (passInput.value.trim().length > 0) {
-      passErr.style.visibility = 'hidden';
-      passInput.style.borderColor = '';
+
+  // ── Step 2: verify OTP ────────────────────────────────────────────────────
+  otpInput.addEventListener('input', () => {
+    otpInput.value = otpInput.value.replace(/\D/g, '').slice(0, 6);
+    if (otpInput.value.length > 0) otpErr.textContent = '';
+  });
+
+  otpForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    otpErr.textContent = '';
+
+    const otp = otpInput.value.trim();
+    if (otp.length !== 6) {
+      otpErr.textContent = 'Please enter the 6-digit code from your email.';
+      otpInput.focus();
+      return;
+    }
+
+    setLoading(verifyBtn, true, 'Confirm Account Deletion');
+
+    try {
+      const res = await fetch(FUNCTIONS.verifyDeletion, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: currentEmail, otp }),
+      });
+      const body = await res.json();
+
+      if (!res.ok) {
+        otpErr.textContent = body.error || 'Something went wrong. Please try again.';
+        // Expired or locked — bounce back to email step after 2 s
+        if (res.status === 410 || res.status === 429) {
+          setTimeout(() => { otpInput.value = ''; showStep('step1'); }, 2000);
+        }
+        return;
+      }
+
+      clearInterval(countdownTimer);
+      document.getElementById('mainCard').style.display = 'none';
+      const sc = document.getElementById('successCard');
+      sc.style.display = 'block';
+      document.getElementById('deletionDateDisplay').textContent =
+        'Scheduled deletion: ' + formatDate(body.scheduledDeletionAt);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    } catch (_) {
+      otpErr.textContent = 'Network error. Please check your connection and try again.';
+    } finally {
+      setLoading(verifyBtn, false, 'Confirm Account Deletion');
+    }
+  });
+
+  // ── Resend ────────────────────────────────────────────────────────────────
+  resendBtn.addEventListener('click', async () => {
+    resendBtn.disabled = true;
+    otpErr.textContent = '';
+
+    try {
+      const res = await fetch(FUNCTIONS.requestDeletion, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: currentEmail }),
+      });
+      const body = await res.json();
+
+      if (!res.ok) {
+        showToast(body.error || 'Failed to resend. Please try again.', true);
+        resendBtn.disabled = false;
+        return;
+      }
+
+      otpInput.value = '';
+      otpInput.focus();
+      showToast('New code sent! Check your email.');
+      startCountdown(60);
+
+    } catch (_) {
+      showToast('Network error. Please try again.', true);
+      resendBtn.disabled = false;
     }
   });
 </script>
