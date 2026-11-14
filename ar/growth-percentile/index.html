@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>حاسبة نمو الطفل حسب منظمة الصحة العالمية: الوزن والطول ومحيط الرأس | بامبينو</title>
+<meta name="description" content="حاسبة مجانية لمعرفة مئين وزن وطول ومحيط رأس طفلك حسب منحنيات منظمة الصحة العالمية من الولادة حتى 5 سنوات، ومتى يجب مراجعة الطبيب.">
+<link rel="canonical" href="https://kiromalakhabib.github.io/bambino-legal/ar/growth-percentile/"><link rel="alternate" hreflang="en" href="https://kiromalakhabib.github.io/bambino-legal/growth-percentile/"><link rel="alternate" hreflang="ar" href="https://kiromalakhabib.github.io/bambino-legal/ar/growth-percentile/"><link rel="alternate" hreflang="x-default" href="https://kiromalakhabib.github.io/bambino-legal/growth-percentile/">
+<meta property="og:type" content="article"><meta property="og:title" content="حاسبة نمو الطفل حسب منظمة الصحة العالمية: الوزن والطول ومحيط الرأس | بامبينو">
+<meta property="og:description" content="حاسبة مجانية لمعرفة مئين وزن وطول ومحيط رأس طفلك حسب منحنيات منظمة الصحة العالمية من الولادة حتى 5 سنوات، ومتى يجب مراجعة الطبيب."><meta property="og:url" content="https://kiromalakhabib.github.io/bambino-legal/ar/growth-percentile/">
+<meta property="og:locale" content="ar">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800;900&family=Cairo:wght@500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/guides.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalWebPage", "name": "حاسبة نمو الطفل حسب منظمة الصحة العالمية: الوزن والطول ومحيط الرأس | بامبينو", "description": "حاسبة مجانية لمعرفة مئين وزن وطول ومحيط رأس طفلك حسب منحنيات منظمة الصحة العالمية من الولادة حتى 5 سنوات، ومتى يجب مراجعة الطبيب.", "inLanguage": "ar", "url": "https://kiromalakhabib.github.io/bambino-legal/ar/growth-percentile/", "lastReviewed": "2026-11-14", "audience": {"@type": "Audience", "audienceType": "Parents"}, "publisher": {"@type": "Organization", "name": "Bambino"}}</script>
+</head><body>
+<div class="top"><a class="brand" href="https://kiromalakhabib.github.io/bambino-legal/download.html?src=seo_growth_ar_logo">Bambino</a><span class="lang"><a href="../../growth-percentile/" hreflang="en" lang="en">English</a></span></div>
+<main>
+<h1>حاسبة نمو الطفل: الوزن والطول ومحيط الرأس</h1>
+<p class="lede">أدخلي وزن طفلك وطوله ومحيط رأسه لتعرفي ترتيبه (المئين) على منحنيات النمو الخاصة بمنظمة الصحة العالمية، وهي المنحنيات التي يعتمدها الأطباء في أغلب الدول من الولادة حتى 5 سنوات.</p>
+<form id="gp-form" class="card" data-lms="../../assets/who-lms.json" novalidate>
+<div class="gp-grid">
+  <div><label class="f">الطفل</label><div class="seg">
+    <label><input type="radio" name="sex" value="1" checked><span>ولد</span></label>
+    <label><input type="radio" name="sex" value="2"><span>بنت</span></label></div></div>
+  <div><label class="f">الوحدات</label><div class="seg">
+    <label><input type="radio" name="units" value="met" checked><span>kg · cm</span></label>
+    <label><input type="radio" name="units" value="imp"><span>lb · in</span></label></div></div>
+  <div><label class="f" for="gp-dob">تاريخ الميلاد</label><div class="f-in"><input type="date" id="gp-dob" required></div></div>
+  <div><label class="f" for="gp-date">تاريخ القياس</label><div class="f-in"><input type="date" id="gp-date" required></div></div>
+  <div><label class="f" for="gp-w">الوزن</label><div class="f-in"><input id="gp-w" inputmode="decimal" placeholder="مثال: 7.4"><span id="gp-w-unit"></span></div></div>
+  <div><label class="f" for="gp-l">الطول <span class="opt">(اختياري)</span></label><div class="f-in"><input id="gp-l" inputmode="decimal" placeholder="مثال: 66"><span id="gp-l-unit"></span></div></div>
+  <div><label class="f" for="gp-h">محيط الرأس <span class="opt">(اختياري)</span></label><div class="f-in"><input id="gp-h" inputmode="decimal" placeholder="مثال: 43"><span id="gp-h-unit"></span></div></div>
+</div>
+<button class="btn" type="submit">اعرضي النتيجة</button>
+<div id="gp-out" aria-live="polite"></div>
+</form>
+<script type="application/json" id="gp-text">{"kg": "كجم", "lb": "رطل", "cm": "سم", "in": "بوصة", "weight": "الوزن بالنسبة للعمر", "length": "الطول بالنسبة للعمر", "height": "الطول بالنسبة للعمر", "head": "محيط الرأس بالنسبة للعمر", "pct": "المئين {n}", "below01": "أقل من المئين 0.1", "above999": "أعلى من المئين 99.9", "ok": "تقريبًا {n} من كل 100 طفل في نفس العمر والجنس قياسهم أقل، و{m} قياسهم أكبر. هذا ضمن المعدل الطبيعي المعتاد.", "low": "أقل من المئين 3. قد يكون هذا طبيعيًا لبعض الأطفال، لكن يُفضَّل مراجعة الطبيب.", "high": "أعلى من المئين 97. قد يكون هذا طبيعيًا لبعض الأطفال، لكن يُفضَّل مراجعة الطبيب.", "ageIs": "العمر عند القياس: {m} شهر ({d} يوم)", "note": "القياس الواحد صورة للحظة واحدة فقط. الطبيب ينظر إلى طريقة نمو طفلك مع الوقت، وليس إلى رقم واحد.", "needDates": "من فضلك أدخلي تاريخ الميلاد وتاريخ القياس.", "ageRange": "معايير منظمة الصحة العالمية تغطي من الولادة حتى 5 سنوات. من فضلك راجعي التواريخ.", "needOne": "أدخلي قياسًا واحدًا على الأقل: الوزن أو الطول أو محيط الرأس.", "loading": "جارٍ تحميل جداول منظمة الصحة العالمية…", "loadFail": "تعذّر تحميل الجداول. تأكدي من الاتصال وحاولي مرة أخرى."}</script>
+<script src="../../assets/growth.js" defer></script>
+
+<h2>ماذا يعني المئين (Percentile)؟</h2>
+<p>المئين يقارن طفلك بالأطفال الأصحاء في نفس العمر والجنس. إذا كان وزن طفلك على <b>المئين 40</b>، فهذا يعني أن حوالي 40 من كل 100 طفل وزنهم أقل، وحوالي 60 وزنهم أكبر.</p>
+<p>المئين الأعلى ليس "أفضل". الطفل على المئين 15 والطفل على المئين 85 قد يكون كلاهما ينمو بشكل ممتاز. الوالدان قصيرا القامة غالبًا يكون طفلهما أصغر، والعكس صحيح.</p>
+
+<h2>ما هو المئين الطبيعي؟</h2>
+<p>أغلب منحنيات النمو تعتبر <b>المئين 3</b> و<b>المئين 97</b> حدود المعدل المعتاد (وبعض الدول تستخدم 2 و98). معظم الأطفال الأصحاء يقعون بينهما.</p>
+<table><tr><th>المئين</th><th>المعنى المعتاد</th></tr>
+<tr><td>من 3 إلى 97</td><td>ضمن المعدل المعتاد</td></tr>
+<tr><td>أقل من 3</td><td>أصغر من أغلب الأطفال في نفس العمر، وقد يرغب الطبيب في فحصه.</td></tr>
+<tr><td>أعلى من 97</td><td>أكبر من أغلب الأطفال في نفس العمر، وقد يرغب الطبيب في فحصه.</td></tr></table>
+<p>الأهم هو <b>اتجاه النمو</b>. الطفل عادةً يسير على نفس المنحنى تقريبًا مع الوقت. طفل ثابت على المئين 10 غالبًا أقل إثارة للقلق من طفل نزل من المئين 75 إلى المئين 25.</p>
+
+<h2>متى تراجعين الطبيب؟</h2>
+<ul>
+<li>إذا كان الوزن أو الطول أو محيط الرأس أقل من المئين 3 أو أعلى من المئين 97.</li>
+<li>إذا تغيّر المئين كثيرًا بين قياس وآخر، مثل عبور خطين من الخطوط الرئيسية على المنحنى (من المئين 50 إلى أقل من 15 مثلًا).</li>
+<li>إذا لم يستعد المولود وزن الولادة خلال أسبوعين تقريبًا.</li>
+<li>إذا كنتِ قلقة بشأن الرضاعة أو عدد الحفاضات المبللة أو النشاط أو التطور، مهما كانت نتيجة المنحنى.</li>
+</ul>
+
+<h2>لماذا منحنيات منظمة الصحة العالمية؟</h2>
+<p>معايير نمو الطفل من منظمة الصحة العالمية مبنية على دراسة تابعت أطفالًا أصحاء يرضعون رضاعة طبيعية في الغالب في البرازيل وغانا والهند والنرويج وعُمان والولايات المتحدة. هي توضّح كيف ينمو الطفل عندما يحصل على بداية صحية، ولهذا تعتمدها أغلب الدول من الولادة حتى 5 سنوات.</p>
+<p>هذه الحاسبة تستخدم الجداول اليومية الرسمية لمنظمة الصحة العالمية، فتعطيكِ نتيجة دقيقة حسب عمر طفلك بالأيام، وليس بالأشهر فقط.</p>
+
+<h2>كيف تقيسين طفلك في البيت؟</h2>
+<ul>
+<li><b>الوزن:</b> بدون ملابس أو حفاض، وعلى نفس الميزان كل مرة. إذا كان عندك ميزان عادي، زني نفسك وأنتِ تحملين الطفل، ثم اطرحي وزنك.</li>
+<li><b>الطول:</b> قبل عمر سنتين يُقاس الطفل وهو مستلقٍ، من أعلى الرأس حتى الكعب مع فرد الساق بلطف. بعد سنتين يُقاس واقفًا.</li>
+<li><b>محيط الرأس:</b> لُفّي شريط قياس ليّن حول أعرض جزء من الرأس، فوق الحاجبين والأذنين مباشرةً.</li>
+</ul>
+<p>القياس في البيت أقل دقة من العيادة، لذلك الفروق الصغيرة طبيعية. استخدميه لمتابعة الاتجاه.</p>
+
+<h2>الأطفال المبتسرون (الخُدّج)</h2>
+<p>إذا وُلد طفلك قبل موعده، يستخدم الأطباء عادةً <b>العمر المصحّح</b> (العمر محسوبًا من موعد الولادة المتوقع وليس من تاريخ الولادة) حتى عمر سنتين تقريبًا. لتفعلي نفس الشيء هنا، أدخلي موعد الولادة المتوقع مكان تاريخ الميلاد.</p>
+
+<div class="cta"><h2>تابعي نمو طفلك بدون حسابات</h2>
+<p>بامبينو يرسم كل قياسات الوزن والطول ومحيط الرأس على منحنيات منظمة الصحة العالمية تلقائيًا، ويعرض لكِ اتجاه النمو مع الوقت، ويذكّرك بمواعيد التطعيمات. مجاني على آيفون وأندرويد.</p>
+<a class="btn" href="https://kiromalakhabib.github.io/bambino-legal/download.html?src=seo_growth_ar">حمّلي بامبينو مجانًا</a></div>
+
+<p class="disc">هذه الحاسبة للمعلومات فقط ولا تغني عن استشارة الطبيب. البيانات: معايير نمو الطفل من منظمة الصحة العالمية (الوزن والطول ومحيط الرأس بالنسبة للعمر، من الولادة حتى 5 سنوات)، من جداول WHO الرسمية. القيم التي تتجاوز 3 انحرافات معيارية تُحسب بالتعديل الذي توصي به المنظمة.</p>
+</main>
+<footer>بامبينو · تطبيق لمتابعة نمو الطفل والرضاعة والنوم والتطعيمات · <a href="../../privacy.html">الخصوصية</a> · <a href="../../terms.html">الشروط</a></footer>
+</body></html>

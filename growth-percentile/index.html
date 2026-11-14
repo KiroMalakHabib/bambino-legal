@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baby Growth Percentile Calculator (WHO Charts, 0–5 Years) | Bambino</title>
+<meta name="description" content="Free WHO growth percentile calculator for babies and toddlers. Check weight, length and head circumference percentiles by exact age, and learn what&#x27;s normal.">
+<link rel="canonical" href="https://kiromalakhabib.github.io/bambino-legal/growth-percentile/"><link rel="alternate" hreflang="en" href="https://kiromalakhabib.github.io/bambino-legal/growth-percentile/"><link rel="alternate" hreflang="ar" href="https://kiromalakhabib.github.io/bambino-legal/ar/growth-percentile/"><link rel="alternate" hreflang="x-default" href="https://kiromalakhabib.github.io/bambino-legal/growth-percentile/">
+<meta property="og:type" content="article"><meta property="og:title" content="Baby Growth Percentile Calculator (WHO Charts, 0–5 Years) | Bambino">
+<meta property="og:description" content="Free WHO growth percentile calculator for babies and toddlers. Check weight, length and head circumference percentiles by exact age, and learn what&#x27;s normal."><meta property="og:url" content="https://kiromalakhabib.github.io/bambino-legal/growth-percentile/">
+<meta property="og:locale" content="en">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800;900&family=Cairo:wght@500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guides.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalWebPage", "name": "Baby Growth Percentile Calculator (WHO Charts, 0–5 Years) | Bambino", "description": "Free WHO growth percentile calculator for babies and toddlers. Check weight, length and head circumference percentiles by exact age, and learn what's normal.", "inLanguage": "en", "url": "https://kiromalakhabib.github.io/bambino-legal/growth-percentile/", "lastReviewed": "2026-11-14", "audience": {"@type": "Audience", "audienceType": "Parents"}, "publisher": {"@type": "Organization", "name": "Bambino"}}</script>
+</head><body>
+<div class="top"><a class="brand" href="https://kiromalakhabib.github.io/bambino-legal/download.html?src=seo_growth_en_logo">Bambino</a><span class="lang"><a href="../ar/growth-percentile/" hreflang="ar" lang="ar">العربية</a></span></div>
+<main>
+<h1>Baby growth percentile calculator</h1>
+<p class="lede">Enter your baby's weight, length and head size to see their percentile on the WHO growth charts, the standard used by doctors in most countries for children from birth to 5 years.</p>
+<form id="gp-form" class="card" data-lms="../assets/who-lms.json" novalidate>
+<div class="gp-grid">
+  <div><label class="f">Baby</label><div class="seg">
+    <label><input type="radio" name="sex" value="1" checked><span>Boy</span></label>
+    <label><input type="radio" name="sex" value="2"><span>Girl</span></label></div></div>
+  <div><label class="f">Units</label><div class="seg">
+    <label><input type="radio" name="units" value="met" checked><span>kg · cm</span></label>
+    <label><input type="radio" name="units" value="imp"><span>lb · in</span></label></div></div>
+  <div><label class="f" for="gp-dob">Date of birth</label><div class="f-in"><input type="date" id="gp-dob" required></div></div>
+  <div><label class="f" for="gp-date">Date measured</label><div class="f-in"><input type="date" id="gp-date" required></div></div>
+  <div><label class="f" for="gp-w">Weight</label><div class="f-in"><input id="gp-w" inputmode="decimal" placeholder="e.g. 7.4"><span id="gp-w-unit"></span></div></div>
+  <div><label class="f" for="gp-l">Length / height <span class="opt">(optional)</span></label><div class="f-in"><input id="gp-l" inputmode="decimal" placeholder="e.g. 66"><span id="gp-l-unit"></span></div></div>
+  <div><label class="f" for="gp-h">Head circumference <span class="opt">(optional)</span></label><div class="f-in"><input id="gp-h" inputmode="decimal" placeholder="e.g. 43"><span id="gp-h-unit"></span></div></div>
+</div>
+<button class="btn" type="submit">Show percentiles</button>
+<div id="gp-out" aria-live="polite"></div>
+</form>
+<script type="application/json" id="gp-text">{"kg": "kg", "lb": "lb", "cm": "cm", "in": "in", "weight": "Weight for age", "length": "Length for age", "height": "Height for age", "head": "Head circumference for age", "pct": "{n}th percentile", "below01": "Below the 0.1st percentile", "above999": "Above the 99.9th percentile", "ok": "About {n} in 100 babies of the same age and sex measure less, and {m} measure more. This is within the usual range.", "low": "Below the 3rd percentile. This can be normal for some babies, but it is worth checking with your doctor.", "high": "Above the 97th percentile. This can be normal for some babies, but it is worth checking with your doctor.", "ageIs": "Age at measurement: {m} months ({d} days)", "note": "One measurement is a snapshot. Your doctor looks at how your baby grows over time, not at a single number.", "needDates": "Please enter the date of birth and the date measured.", "ageRange": "The WHO standards cover birth to 5 years. Please check the dates.", "needOne": "Enter at least one measurement: weight, length or head circumference.", "loading": "Loading WHO tables…", "loadFail": "Could not load the WHO tables. Please check your connection and try again."}</script>
+<script src="../assets/growth.js" defer></script>
+
+<h2>What does a percentile mean?</h2>
+<p>A percentile compares your baby with healthy babies of the same age and sex. If your baby's weight is on the <b>40th percentile</b>, about 40 out of 100 babies weigh less and about 60 weigh more.</p>
+<p>A higher percentile is not "better". A baby on the 15th percentile and a baby on the 85th percentile can both be growing perfectly well. Small parents often have small babies, and big parents often have big babies.</p>
+
+<h2>What is a normal percentile?</h2>
+<p>Most growth charts mark the <b>3rd</b> and <b>97th</b> percentiles as the edges of the usual range (some countries use the 2nd and 98th). Most healthy babies sit somewhere between them.</p>
+<table><tr><th>Percentile</th><th>What it usually means</th></tr>
+<tr><td>3rd to 97th</td><td>Within the usual range</td></tr>
+<tr><td>Below the 3rd</td><td>Smaller than most babies the same age. Your doctor may want to check it.</td></tr>
+<tr><td>Above the 97th</td><td>Bigger than most babies the same age. Your doctor may want to check it.</td></tr></table>
+<p>What matters most is the <b>trend</b>. Babies usually follow roughly the same curve over time. A steady 10th percentile is often less worrying than a baby who drops from the 75th to the 25th.</p>
+
+<h2>When to talk to your doctor</h2>
+<ul>
+<li>Weight, length or head size is below the 3rd or above the 97th percentile.</li>
+<li>The percentile changes a lot between checks, for example crossing two of the main lines on the chart (such as from the 50th to below the 15th).</li>
+<li>Your newborn has not regained their birth weight by about 2 weeks.</li>
+<li>You are worried about feeding, wet diapers, energy or development, whatever the chart says.</li>
+</ul>
+
+<h2>Why WHO growth charts?</h2>
+<p>The WHO Child Growth Standards come from the WHO Multicentre Growth Reference Study, which followed healthy, mostly breastfed children in Brazil, Ghana, India, Norway, Oman and the United States. They show how children grow when they get a healthy start, which is why most countries use them from birth to 5 years. In the United States, the CDC recommends the WHO charts for children under 2.</p>
+<p>This calculator uses WHO's official daily tables, so it gives a precise result for your baby's exact age in days, not just their age in months.</p>
+
+<h2>How to measure at home</h2>
+<ul>
+<li><b>Weight:</b> weigh without clothes or a diaper, on the same scale each time. With a bathroom scale, weigh yourself holding the baby, then subtract your own weight.</li>
+<li><b>Length:</b> before age 2, measure lying down, from the top of the head to the heel, with the leg gently straightened. After 2, measure standing.</li>
+<li><b>Head circumference:</b> wrap a soft tape around the widest part of the head, just above the eyebrows and ears.</li>
+</ul>
+<p>Home measurements are less exact than at the clinic, so small differences are normal. Use them to follow the trend.</p>
+
+<h2>Premature babies</h2>
+<p>If your baby was born early, doctors usually use the <b>corrected age</b> (age from the due date, not the birth date) until about 2 years. To do the same here, enter the due date as the date of birth.</p>
+
+<div class="cta"><h2>Track growth without the math</h2>
+<p>Bambino plots every weight, length and head measurement on the WHO charts for you, shows the trend over time, and reminds you about vaccines. Free on iPhone and Android.</p>
+<a class="btn" href="https://kiromalakhabib.github.io/bambino-legal/download.html?src=seo_growth_en">Get Bambino free</a></div>
+
+<p class="disc">This calculator is for information only and does not replace advice from your doctor. Data: WHO Child Growth Standards (weight-for-age, length/height-for-age, head circumference-for-age, 0–5 years), from WHO's official anthro tables. Values beyond 3 standard deviations use WHO's recommended adjustment.</p>
+</main>
+<footer>Bambino · baby tracker for growth, feeding, sleep and vaccines · <a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></footer>
+</body></html>
