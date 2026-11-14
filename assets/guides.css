@@ -56,3 +56,8 @@ th{background:var(--soft);font-weight:800}
 footer{max-width:760px;margin:0 auto;padding:0 16px 40px;font-size:14px;color:var(--muted)}
 footer a{color:var(--muted)}
 .f-in input[type=date]{-webkit-appearance:none;appearance:none;min-height:48px}
+.vx-table tr.past td{opacity:.55}
+.vx-table tr.next td{background:#FFF1EB}
+.tag{display:inline-block;font-size:12px;font-weight:800;color:#fff;background:var(--peach);border-radius:999px;padding:1px 9px;margin-inline-start:4px}
+.vx-list{list-style:none;padding:0}
+.vx-list li{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:8px}
