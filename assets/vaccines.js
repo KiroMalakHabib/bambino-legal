@@ -13,7 +13,9 @@
     const fmt = new Intl.DateTimeFormat(D.locale, { day: 'numeric', month: 'long', year: 'numeric' });
     let nextMarked = false;
     const rows = D.rows.map((r) => {
-      const d = new Date(dob.getTime() + r.weeks * 7 * 86400000);
+      let d;
+      if (r.months != null) { d = new Date(dob); d.setMonth(d.getMonth() + r.months); }
+      else d = new Date(dob.getTime() + r.weeks * 7 * 86400000);
       let cls = d < today ? 'past' : '';
       if (!cls && !nextMarked) { cls = 'next'; nextMarked = true; }
       return `<tr class="${cls}"><td><b>${r.age}</b>${cls === 'next' ? ` <span class="tag">${D.next}</span>` : ''}<br><span class="opt">${fmt.format(d)}</span></td><td>${r.list}</td></tr>`;
