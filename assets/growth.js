@@ -47,7 +47,7 @@
   function pctText(p) {
     if (p < 0.1) return T.below01;
     if (p > 99.9) return T.above999;
-    const n = p < 1 || p > 99 ? p.toFixed(1) : String(Math.round(p));
+    const n = p < 1 || p > 99 ? p.toFixed(1).replace('.', T.dec || '.') : String(Math.round(p));
     return T.pct.replace('{n}', n);
   }
 
@@ -81,7 +81,8 @@
       try { lms = await (await fetch(dataUrl)).json(); } catch (_) { out.innerHTML = `<p class="gp-err">${T.loadFail}</p>`; return; }
     }
     const get = (ind) => lms[ind][sex][days];
-    const fmt = (v, metricUnit, impUnit, f) => imp ? [(v / f).toFixed(1), impUnit] : [v.toFixed(1), metricUnit];
+    const dec = (x) => x.toFixed(1).replace('.', T.dec || '.');
+    const fmt = (v, metricUnit, impUnit, f) => imp ? [dec(v / f), impUnit] : [dec(v), metricUnit];
     let html = '';
     if (w) { const [L, M, S] = get('wfa'); const p = cdf(z(w, L, M, S, true)) * 100; const [v, u] = fmt(w, T.kg, T.lb, 0.45359237); html += row(T.weight, v, u, p); }
     if (l) { const [L, M, S] = get('lfa'); const p = cdf(z(l, L, M, S, false)) * 100; const [v, u] = fmt(l, T.cm, T.in, 2.54); html += row(days < 731 ? T.length : T.height, v, u, p); }

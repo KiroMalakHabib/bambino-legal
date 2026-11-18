@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es" dir="ltr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora de percentiles de crecimiento del bebé (curvas OMS, 0–5 años) | Bambino</title>
+<meta name="description" content="Calculadora gratuita de percentiles de la OMS: peso, longitud y perímetro cefálico de tu bebé según su edad exacta. Qué es normal y cuándo consultar al pediatra.">
+<link rel="canonical" href="https://kiromalakhabib.github.io/bambino-legal/es/percentiles-de-crecimiento/"><link rel="alternate" hreflang="en" href="https://kiromalakhabib.github.io/bambino-legal/growth-percentile/"><link rel="alternate" hreflang="ar" href="https://kiromalakhabib.github.io/bambino-legal/ar/growth-percentile/"><link rel="alternate" hreflang="es" href="https://kiromalakhabib.github.io/bambino-legal/es/percentiles-de-crecimiento/"><link rel="alternate" hreflang="x-default" href="https://kiromalakhabib.github.io/bambino-legal/growth-percentile/">
+<meta property="og:type" content="article"><meta property="og:title" content="Calculadora de percentiles de crecimiento del bebé (curvas OMS, 0–5 años) | Bambino">
+<meta property="og:description" content="Calculadora gratuita de percentiles de la OMS: peso, longitud y perímetro cefálico de tu bebé según su edad exacta. Qué es normal y cuándo consultar al pediatra."><meta property="og:url" content="https://kiromalakhabib.github.io/bambino-legal/es/percentiles-de-crecimiento/">
+<meta property="og:locale" content="es">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800;900&family=Cairo:wght@500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/guides.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalWebPage", "name": "Calculadora de percentiles de crecimiento del bebé (curvas OMS, 0–5 años) | Bambino", "description": "Calculadora gratuita de percentiles de la OMS: peso, longitud y perímetro cefálico de tu bebé según su edad exacta. Qué es normal y cuándo consultar al pediatra.", "inLanguage": "es", "url": "https://kiromalakhabib.github.io/bambino-legal/es/percentiles-de-crecimiento/", "lastReviewed": "2026-11-18", "audience": {"@type": "Audience", "audienceType": "Parents"}, "publisher": {"@type": "Organization", "name": "Bambino"}}</script>
+</head><body>
+<div class="top"><a class="brand" href="https://kiromalakhabib.github.io/bambino-legal/download.html?src=seo_growth_es_logo">Bambino</a><span class="lang"><a href="../../growth-percentile/" hreflang="en" lang="en">English</a> <a href="../../ar/growth-percentile/" hreflang="ar" lang="ar">العربية</a></span></div>
+<main>
+<h1>Calculadora de percentiles de crecimiento del bebé</h1>
+<p class="lede">Introduce el peso, la longitud y el perímetro cefálico de tu bebé para ver su percentil en las curvas de crecimiento de la OMS, las que usan los pediatras en la mayoría de los países desde el nacimiento hasta los 5 años.</p>
+<form id="gp-form" class="card" data-lms="../../assets/who-lms.json" novalidate>
+<div class="gp-grid">
+  <div><label class="f">Bebé</label><div class="seg">
+    <label><input type="radio" name="sex" value="1" checked><span>Niño</span></label>
+    <label><input type="radio" name="sex" value="2"><span>Niña</span></label></div></div>
+  <div><label class="f">Unidades</label><div class="seg">
+    <label><input type="radio" name="units" value="met" checked><span>kg · cm</span></label>
+    <label><input type="radio" name="units" value="imp"><span>lb · in</span></label></div></div>
+  <div><label class="f" for="gp-dob">Fecha de nacimiento</label><div class="f-in"><input type="date" id="gp-dob" required></div></div>
+  <div><label class="f" for="gp-date">Fecha de la medición</label><div class="f-in"><input type="date" id="gp-date" required></div></div>
+  <div><label class="f" for="gp-w">Peso</label><div class="f-in"><input id="gp-w" inputmode="decimal" placeholder="ej. 7,4"><span id="gp-w-unit"></span></div></div>
+  <div><label class="f" for="gp-l">Longitud / talla <span class="opt">(opcional)</span></label><div class="f-in"><input id="gp-l" inputmode="decimal" placeholder="ej. 66"><span id="gp-l-unit"></span></div></div>
+  <div><label class="f" for="gp-h">Perímetro cefálico <span class="opt">(opcional)</span></label><div class="f-in"><input id="gp-h" inputmode="decimal" placeholder="ej. 43"><span id="gp-h-unit"></span></div></div>
+</div>
+<button class="btn" type="submit">Ver percentiles</button>
+<div id="gp-out" aria-live="polite"></div>
+</form>
+<script type="application/json" id="gp-text">{"kg": "kg", "lb": "lb", "cm": "cm", "in": "in", "dec": ",", "weight": "Peso para la edad", "length": "Longitud para la edad", "height": "Talla para la edad", "head": "Perímetro cefálico para la edad", "pct": "Percentil {n}", "below01": "Por debajo del percentil 0,1", "above999": "Por encima del percentil 99,9", "ok": "Aproximadamente {n} de cada 100 bebés de la misma edad y sexo miden menos, y {m} miden más. Está dentro del rango habitual.", "low": "Por debajo del percentil 3. Puede ser normal en algunos bebés, pero conviene consultarlo con tu pediatra.", "high": "Por encima del percentil 97. Puede ser normal en algunos bebés, pero conviene consultarlo con tu pediatra.", "ageIs": "Edad en la medición: {m} meses ({d} días)", "note": "Una medición es solo una foto del momento. Tu pediatra mira cómo crece tu bebé con el tiempo, no un único número.", "needDates": "Introduce la fecha de nacimiento y la fecha de la medición.", "ageRange": "Los patrones de la OMS cubren desde el nacimiento hasta los 5 años. Revisa las fechas.", "needOne": "Introduce al menos una medida: peso, longitud o perímetro cefálico.", "loading": "Cargando las tablas de la OMS…", "loadFail": "No se pudieron cargar las tablas de la OMS. Revisa tu conexión e inténtalo de nuevo."}</script>
+<script src="../../assets/growth.js" defer></script>
+
+<h2>¿Qué significa un percentil?</h2>
+<p>El percentil compara a tu bebé con bebés sanos de la misma edad y sexo. Si el peso de tu bebé está en el <b>percentil 40</b>, unos 40 de cada 100 bebés pesan menos y unos 60 pesan más.</p>
+<p>Un percentil más alto no es "mejor". Un bebé en el percentil 15 y otro en el percentil 85 pueden estar creciendo perfectamente. Los padres bajitos suelen tener bebés más pequeños, y los padres altos, bebés más grandes.</p>
+
+<h2>¿Qué percentil es normal?</h2>
+<p>La mayoría de las curvas marcan los percentiles <b>3</b> y <b>97</b> como los límites del rango habitual (algunos países usan el 2 y el 98). La mayoría de los bebés sanos están entre ellos.</p>
+<table><tr><th>Percentil</th><th>Qué suele significar</th></tr>
+<tr><td>Del 3 al 97</td><td>Dentro del rango habitual</td></tr>
+<tr><td>Por debajo del 3</td><td>Más pequeño que la mayoría de los bebés de su edad. Tu pediatra puede querer revisarlo.</td></tr>
+<tr><td>Por encima del 97</td><td>Más grande que la mayoría de los bebés de su edad. Tu pediatra puede querer revisarlo.</td></tr></table>
+<p>Lo más importante es la <b>tendencia</b>. Los bebés suelen seguir más o menos la misma curva con el tiempo. Un bebé estable en el percentil 10 suele preocupar menos que uno que baja del percentil 75 al 25.</p>
+
+<h2>Cuándo consultar al pediatra</h2>
+<ul>
+<li>El peso, la longitud o el perímetro cefálico están por debajo del percentil 3 o por encima del 97.</li>
+<li>El percentil cambia mucho entre una revisión y otra, por ejemplo si cruza dos de las líneas principales de la curva (como pasar del percentil 50 a menos del 15).</li>
+<li>Tu recién nacido no ha recuperado el peso de nacimiento hacia las 2 semanas.</li>
+<li>Te preocupa la alimentación, los pañales mojados, la energía o el desarrollo, diga lo que diga la curva.</li>
+</ul>
+
+<h2>¿Por qué las curvas de la OMS?</h2>
+<p>Los Patrones de Crecimiento Infantil de la OMS proceden del Estudio Multicéntrico de la OMS sobre el Patrón de Crecimiento, que siguió a niños sanos, en su mayoría amamantados, en Brasil, Ghana, India, Noruega, Omán y Estados Unidos. Muestran cómo crecen los niños cuando tienen un buen comienzo, y por eso la mayoría de los países los usan desde el nacimiento hasta los 5 años.</p>
+<p>Esta calculadora usa las tablas diarias oficiales de la OMS, así que da un resultado preciso para la edad exacta de tu bebé en días, no solo en meses.</p>
+
+<h2>Cómo medir en casa</h2>
+<ul>
+<li><b>Peso:</b> sin ropa ni pañal, y siempre en la misma báscula. Con una báscula de baño, pésate con el bebé en brazos y resta tu propio peso.</li>
+<li><b>Longitud:</b> antes de los 2 años se mide tumbado, desde la parte superior de la cabeza hasta el talón, con la pierna estirada con suavidad. Después de los 2 años, de pie.</li>
+<li><b>Perímetro cefálico:</b> rodea con una cinta métrica flexible la parte más ancha de la cabeza, justo por encima de las cejas y las orejas.</li>
+</ul>
+<p>Las medidas en casa son menos exactas que en la consulta, así que las pequeñas diferencias son normales. Úsalas para seguir la tendencia.</p>
+
+<h2>Bebés prematuros</h2>
+<p>Si tu bebé nació antes de tiempo, los pediatras suelen usar la <b>edad corregida</b> (la edad contada desde la fecha prevista de parto, no desde el nacimiento) hasta aproximadamente los 2 años. Para hacer lo mismo aquí, introduce la fecha prevista de parto como fecha de nacimiento.</p>
+
+<div class="cta"><h2>Sigue su crecimiento sin hacer cuentas</h2>
+<p>Bambino dibuja cada medida de peso, longitud y perímetro cefálico en las curvas de la OMS, te muestra la tendencia con el tiempo y te recuerda las vacunas. Gratis en iPhone y Android.</p>
+<a class="btn" href="https://kiromalakhabib.github.io/bambino-legal/download.html?src=seo_growth_es">Descarga Bambino gratis</a></div>
+
+<p class="disc">Esta calculadora es solo informativa y no sustituye el consejo de tu pediatra. Datos: Patrones de Crecimiento Infantil de la OMS (peso, longitud/talla y perímetro cefálico para la edad, de 0 a 5 años), de las tablas oficiales de la OMS. Los valores más allá de 3 desviaciones estándar usan el ajuste recomendado por la OMS.</p>
+</main>
+<footer>Bambino · app para el crecimiento, la alimentación, el sueño y las vacunas del bebé · <a href="../../privacy.html">Privacidad</a> · <a href="../../terms.html">Términos</a></footer>
+</body></html>
